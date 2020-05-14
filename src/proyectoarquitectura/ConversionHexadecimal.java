@@ -11,6 +11,8 @@ package proyectoarquitectura;
  */
 
 public  class ConversionHexadecimal  {
+    
+    
         public static String ConvertirDecAHexadecial(int decimal)
         {
             // Conversion de decimal a hexadecimal 
@@ -23,6 +25,24 @@ public  class ConversionHexadecimal  {
             // Conversion de decimal a hexadecimal 
              int decimal = Integer.parseInt(hexadecimal, 16);
              return decimal;            
+        }
+        
+        public static String ConvercionesConOperaciones(String hexadecimal)
+        {
+            // Conversion de decimal a hexadecimal 
+             int decimal = Integer.parseInt(hexadecimal, 16);
+             decimal=-1*decimal;
+             ConvertirDecAHexadecial(decimal);
+             hexadecimal = Integer.toHexString(decimal);
+             return hexadecimal;           
+        }
+        
+        public static int ConvercionesConOperaciones(String hexadecimal,int offset)
+        {
+            // Conversion de decimal a hexadecimal 
+             int decimal = Integer.parseInt(hexadecimal, 16);
+             decimal+=offset;
+             return decimal;           
         }
     }
 
