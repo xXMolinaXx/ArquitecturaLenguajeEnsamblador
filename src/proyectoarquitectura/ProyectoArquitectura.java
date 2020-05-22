@@ -29,6 +29,9 @@ public class ProyectoArquitectura {
         //numeroRegistroUsar es el indice que se utiliza para selecionar un registro en arreglo registro
         int numeroRegistroUsar;
         int numeroRegistroUsar1;
+        int numeroRegistroUsar2;
+        int numeroRegistroUsar3;
+        int numeroRegistroUsar4;
         //son las varaibles que almacenas el digito convertido a decimal y viceversa
         int DecimalConvertirCarga;
         //int HexaConvertirAlmacenamiento;
@@ -50,7 +53,7 @@ public class ProyectoArquitectura {
         do {
 
             System.out.print("Ingrese la instrucion de desea ejecutar \n ");
-            System.out.print("opciones:\nmov\nldr\nstr\nadd\nsub\nmult\nneg\nlogica\nreg\nmemoria ");
+            System.out.print("opciones:\nmov\nldr\nstr\nneg\nlogica\nreg\nmemoria\nAritmetica\n");
             instrucionMemoria[0] = teclado.nextLine();
 
             switch (instrucionMemoria[0]) {
@@ -143,36 +146,144 @@ public class ProyectoArquitectura {
                     System.out.print("error " + e.getMessage() + "\n");
                 }
                 break;
-                //opcion de codigo add
-                case "add":
-                    System.out.print("Ingrese el numero de registro que desea usar para cargar \n");
-                    instrucionMemoria[1] = teclado.nextLine();
-                    System.out.print("Ingrese el numero de registro que dese usar para sumar\n ");
-                    instrucionMemoria[2] = teclado.nextLine();
-                    numeroRegistroUsar = Integer.parseInt(instrucionMemoria[1]);
-                    numeroRegistroUsar1 = Integer.parseInt(instrucionMemoria[2]);
-                    System.out.print("Ingrese el numero que desea sumar\n");
-                    instrucionMemoria[3] = teclado.nextLine();
-                    int DecimalSumar = Integer.parseInt(instrucionMemoria[3]);
-                    if (DecimalSumar < 7) {
-                        String HexadecimalConvertir = registros[numeroRegistroUsar1];
-                        int HexaTransformadoDecimal = ConversionHexadecimal.ConvertirHexADecimal(HexadecimalConvertir);
+                
+                case "Aritmetica":
+                    try {
+                    System.out.print(" Que operacion aritmetica quiere realizar add / sub / mul\n ");
+                    instrucionMemoria[0] = teclado.nextLine();
+                    switch (instrucionMemoria[0]) {
+                        
+                        case "add" :
+                             try {
+                               System.out.print(" Realizar operacion ADD con\nA: 2 Operandos\nB: 3 Operandos\n");
+                                instrucionMemoria[0] = teclado.nextLine();
+                                switch (instrucionMemoria[0]) {
+                                
+                                case "A" :
+                                    System.out.print("Ingrese el numero de registro al que se va carga y tiene el valor a usar ");
+                                    instrucionMemoria[1] = teclado.nextLine();
+                                    numeroRegistroUsar = Integer.parseInt(instrucionMemoria[1]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[2] = teclado.nextLine();
+                                    numeroRegistroUsar1 = Integer.parseInt(instrucionMemoria[2]);
+                                    System.out.print("Ingrese el numero de registro donde desee guardar ");
+                                    instrucionMemoria[3] = teclado.nextLine();
+                                    numeroRegistroUsar2 = Integer.parseInt(instrucionMemoria[3]);
 
-                        //System.out.print("Instruciona ejecutar :"+instrucionMemoria[0]+" registro "+instrucionMemoria[1]+" "+instrucionMemoria[2]+"\n" );
-                        registros[numeroRegistroUsar] = ConversionHexadecimal.ConvertirDecAHexadecial(HexaTransformadoDecimal + DecimalSumar);
-                    } else {
-                        System.out.print("el numero es demasiado grande para la opcion add,solo se puede sumar hasta el numero 7 \n");
+                                    System.out.print("Instruciona ejecutar :" + instrucionMemoria[0] + " registro" + instrucionMemoria[1] + "registro" + instrucionMemoria[2] + "\n");
+                                    registros[numeroRegistroUsar2]= InstruccionesAritmeticas.operacionAdd2(registros[numeroRegistroUsar], registros[numeroRegistroUsar1]);
+                                break;
+                                case "B" :
+                                    System.out.print("Ingrese el numero de registro al que se va carga y tiene el valor a usar ");
+                                    instrucionMemoria[1] = teclado.nextLine();
+                                    numeroRegistroUsar = Integer.parseInt(instrucionMemoria[1]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[2] = teclado.nextLine();
+                                    numeroRegistroUsar1 = Integer.parseInt(instrucionMemoria[2]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[3] = teclado.nextLine();
+                                    numeroRegistroUsar3 = Integer.parseInt(instrucionMemoria[3]);
+                                    System.out.print("Ingrese el numero de registro donde desee guardar ");
+                                    instrucionMemoria[4] = teclado.nextLine();
+                                    numeroRegistroUsar4 = Integer.parseInt(instrucionMemoria[4]);
+
+                                    System.out.print("Instruciona ejecutar :" + instrucionMemoria[0] + " registro" + instrucionMemoria[1] + ",registro" + instrucionMemoria[2] + "registro" + instrucionMemoria[3] +  "\n");
+                                    registros[numeroRegistroUsar4]= InstruccionesAritmeticas.operacionAdd3(registros[numeroRegistroUsar], registros[numeroRegistroUsar1],registros[numeroRegistroUsar3]);
+                                break;
+                                }
+                             }
+                                catch (Exception e) {
+                                }    
+                             break;
+                        case "sub":
+                            try {
+                               System.out.print(" Realizar operacion SUB con\nA: 2 Operandos\nB: 3 Operandos\n");
+                                instrucionMemoria[0] = teclado.nextLine();
+                                switch (instrucionMemoria[0]) {
+                                
+                                case "A" :
+                                    System.out.print("Ingrese el numero de registro al que se va carga y tiene el valor a usar ");
+                                    instrucionMemoria[1] = teclado.nextLine();
+                                    numeroRegistroUsar = Integer.parseInt(instrucionMemoria[1]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[2] = teclado.nextLine();
+                                    numeroRegistroUsar1 = Integer.parseInt(instrucionMemoria[2]);
+                                    System.out.print("Ingrese el numero de registro donde desee guardar ");
+                                    instrucionMemoria[3] = teclado.nextLine();
+                                    numeroRegistroUsar2 = Integer.parseInt(instrucionMemoria[3]);
+
+                                    System.out.print("Instruciona ejecutar :" + instrucionMemoria[0] + " registro" + instrucionMemoria[1] + ",registro" + instrucionMemoria[2] + "\n");
+                                    registros[numeroRegistroUsar2]= InstruccionesAritmeticas.operacionSub2(registros[numeroRegistroUsar], registros[numeroRegistroUsar1]);
+                                break;
+                                case "B" :
+                                    System.out.print("Ingrese el numero de registro al que se va carga y tiene el valor a usar ");
+                                    instrucionMemoria[1] = teclado.nextLine();
+                                    numeroRegistroUsar = Integer.parseInt(instrucionMemoria[1]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[2] = teclado.nextLine();
+                                    numeroRegistroUsar1 = Integer.parseInt(instrucionMemoria[2]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[3] = teclado.nextLine();
+                                    numeroRegistroUsar3 = Integer.parseInt(instrucionMemoria[3]);
+                                    System.out.print("Ingrese el numero de registro donde desee guardar ");
+                                    instrucionMemoria[4] = teclado.nextLine();
+                                    numeroRegistroUsar4 = Integer.parseInt(instrucionMemoria[4]);
+
+                                    System.out.print("Instruciona ejecutar :" + instrucionMemoria[0] + " registro" + instrucionMemoria[1] + ",registro" + instrucionMemoria[2] + "registro" + instrucionMemoria[3] + "\n");
+                                    registros[numeroRegistroUsar4]= InstruccionesAritmeticas.operacionSub3(registros[numeroRegistroUsar], registros[numeroRegistroUsar1],registros[numeroRegistroUsar3]);
+                                break;
+                                }
+                             }
+                                catch (Exception e) {
+                                }   
+                            break;
+                        case "mul":
+                            try {
+                               System.out.print(" Realizar operacion SUB con\nA: 2 Operandos\nB: 3 Operandos\n");
+                                instrucionMemoria[0] = teclado.nextLine();
+                                switch (instrucionMemoria[0]) {
+                                
+                                case "A" :
+                                    System.out.print("Ingrese el numero de registro al que se va carga y tiene el valor a usar ");
+                                    instrucionMemoria[1] = teclado.nextLine();
+                                    numeroRegistroUsar = Integer.parseInt(instrucionMemoria[1]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[2] = teclado.nextLine();
+                                    numeroRegistroUsar1 = Integer.parseInt(instrucionMemoria[2]);
+                                    System.out.print("Ingrese el numero de registro donde desee guardar ");
+                                    instrucionMemoria[3] = teclado.nextLine();
+                                    numeroRegistroUsar2 = Integer.parseInt(instrucionMemoria[3]);
+
+                                    System.out.print("Instruciona ejecutar :" + instrucionMemoria[0] + " registro" + instrucionMemoria[1] + ",registro" + instrucionMemoria[2] + "\n");
+                                    registros[numeroRegistroUsar2]= InstruccionesAritmeticas.operacionMul2(registros[numeroRegistroUsar], registros[numeroRegistroUsar1]);
+                                break;
+                                case "B" :
+                                    System.out.print("Ingrese el numero de registro al que se va carga y tiene el valor a usar ");
+                                    instrucionMemoria[1] = teclado.nextLine();
+                                    numeroRegistroUsar = Integer.parseInt(instrucionMemoria[1]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[2] = teclado.nextLine();
+                                    numeroRegistroUsar1 = Integer.parseInt(instrucionMemoria[2]);
+                                    System.out.print("Ingrese el numero de registro que contiene el otro valor");
+                                    instrucionMemoria[3] = teclado.nextLine();
+                                    numeroRegistroUsar3 = Integer.parseInt(instrucionMemoria[3]);
+                                    System.out.print("Ingrese el numero de registro donde desee guardar ");
+                                    instrucionMemoria[4] = teclado.nextLine();
+                                    numeroRegistroUsar4 = Integer.parseInt(instrucionMemoria[4]);
+
+                                    System.out.print("Instruciona ejecutar :" + instrucionMemoria[0] + " registro" + instrucionMemoria[1] + ",registro" + instrucionMemoria[2] + "registro" + instrucionMemoria[3] + "\n");
+                                    registros[numeroRegistroUsar4]= InstruccionesAritmeticas.operacionMul3(registros[numeroRegistroUsar], registros[numeroRegistroUsar1],registros[numeroRegistroUsar3]);
+                                break;
+                                }
+                             }
+                                catch (Exception e) {
+                                }    
+                            
+                   
                     }
-
-                    break;
-                //opcion de codigo sub
-                case "sub":
-                    //TODO
-                    break;
-                //opcion de codigo mult
-                case "mult":
-                    //TODO
-                    break;
+                } catch (Exception e) {
+                }
+                break;
                 //opcion logicas de arm
                 case "logica":
                     try {
